@@ -1,0 +1,37 @@
+const Bodies=Matter.Bodies;
+const World =Matter.World;
+const Engine=Matter.Engine;
+
+
+var engine, world;
+var bg;
+var music = new Audio('music.mp3');
+var snow=[];
+
+function preload(){
+bg=loadImage("snow1.jpg");
+}
+
+function setup() {
+  var canvas = createCanvas(800,400);
+    engine = Engine.create();
+    world = engine.world;
+
+  
+}
+
+
+function draw() {
+  background(bg);  
+  Engine.update(engine);
+  if(frameCount%1==frameCount){
+    music.play();
+  }
+
+  if(frameCount%5==0){
+    snow.push(new Snow(random(0,800),30,30));
+  }
+for(var i=0;i<snow.length;i++){
+  snow [i].display();
+}
+}
